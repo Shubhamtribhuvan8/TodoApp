@@ -1,54 +1,45 @@
 <script>
-  export default {
-    data: vm => ({
-      loading: false,
-      rules: [value => vm.checkApi(value)],
-      timeout: null,
-      userName: '',
-    }),
-    methods: {
-      async submit (event) {
-        this.loading = true
-        const results = await event
-        this.loading = false
-        alert(JSON.stringify(results, null, 2))
+export default {
+  data() {
+    return {
+      userData: {
+        userName: '',
+        email: '',
+        password: '',
       },
-      async checkApi (userName) {
-        return new Promise(resolve => {
-          clearTimeout(this.timeout)
-
-          this.timeout = setTimeout(() => {
-            if (!userName) return resolve('Please enter a user name.')
-            if (userName === 'johnleider') return resolve('User name already taken. Please try another one.')
-            return resolve(true)
-          }, 1000)
-        })
-      },
+      isSubmitted: false, 
+    };
+  },
+  methods: {
+    submit() {
+      this.isSubmitted = true;
     },
-  }
+  },
+};
 </script>
+
 <template>
- 
+  <div>
     <v-sheet max-width="300" class="mx-auto">
       <h4>Sign Up</h4>
       <v-form validate-on="submit lazy" @submit.prevent="submit">
         <v-text-field
-          v-model="userName"
+          v-model="userData.userName"
           :rules="rules"
           label="Name"
         ></v-text-field>
         <v-text-field
-          v-model="userName"
+          v-model="userData.email"
           :rules="rules"
           label="Email"
         ></v-text-field>
-  
+
         <v-text-field
-          v-model="userName"
+          v-model="userData.password"
           :rules="rules"
           label="Password"
         ></v-text-field>
-  
+
         <v-btn
           :loading="loading"
           type="submit"
@@ -58,4 +49,11 @@
         ></v-btn>
       </v-form>
     </v-sheet>
-  </template>
+
+    <div v-if="isSubmitted"> 
+      <p>UserName: <b>{{ userData.userName }}</b></p>
+      <p>Mail: <b>{{ userData.email }}</b></p>
+      <p>Password: <b>{{ userData.password }}</b></p>
+    </div>
+  </div>
+</template>

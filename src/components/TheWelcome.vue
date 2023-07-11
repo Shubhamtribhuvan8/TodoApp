@@ -4,4 +4,5 @@ import Registration from './Registration.vue'
 
 <template>
   <Registration/>
+
 </template>
