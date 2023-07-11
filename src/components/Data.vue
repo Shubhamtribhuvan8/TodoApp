@@ -13,8 +13,10 @@ export default {
 </script>
 <template>
   <div>
-    <h2>Another Component</h2>
+    <v-sheet max-width="300" class="mx-auto">
+    <h2>Get data page</h2>
     <p>Data: {{ postData.textsomething }}</p>
+  </v-sheet>
   </div>
 </template>
 

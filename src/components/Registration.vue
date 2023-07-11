@@ -58,7 +58,7 @@ export default {
           type="submit"
           block
           class="mt-2"
-          text="Submit"
+          text="Register"
         ></v-btn>
       </v-form>
     </v-sheet>

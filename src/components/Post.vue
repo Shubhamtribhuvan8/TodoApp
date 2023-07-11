@@ -38,7 +38,7 @@ export default {
           type="submit"
           block
           class="mt-2"
-          text="Submit"
+          text="ADD TODO"
         ></v-btn>
       </v-form>
     </v-sheet>
