@@ -19,10 +19,13 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="styling1"> 
     <v-sheet max-width="300" class="mx-auto">
       <h1>ToDo Details</h1>
       <h1>Your Data: {{ postData.textsomething }}</h1>
+      <ul>
+        <li v-for="data in postData" :key="data.id">{{ data.textsomething }}</li>
+      </ul>
       <v-btn variant="outlined" @click="deleteData">
         Delete
       </v-btn>

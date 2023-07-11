@@ -7,7 +7,7 @@ const store = createStore({
       email: "",
       password: "",
     },
-    postData: {},
+    postData: [],
     historyData: [],
   },
   mutations: {
@@ -21,7 +21,7 @@ const store = createStore({
       state.historyData.push(data);
     },
     clearPostData(state) {
-      state.postData = {};
+      state.postData = [];
     },
   },
   actions: {

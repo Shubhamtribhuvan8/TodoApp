@@ -12,7 +12,8 @@ export default {
     submit() {
       const token = localStorage.getItem('papa');
       if (token) {
-        this.$store.dispatch('setPostData', this.postData);
+        const newData = { ...this.postData };
+        this.$store.dispatch('setPostData', newData);
         this.isSubmitted = true;
         this.resetForm();
         this.routing();
@@ -33,7 +34,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="styling1">
     <v-sheet max-width="300" class="mx-auto">
       <v-form validate-on="submit lazy" @submit.prevent="submit">
         <v-textarea label="Add Something!" v-model="postData.textsomething"

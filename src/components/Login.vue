@@ -51,7 +51,7 @@ export default {
 <template>
   <div class="styling1">
     <v-sheet max-width="300" class="mx-auto">
-      <h4>Login</h4>
+      <h4 class="login">Login</h4>
       <v-form validate-on="submit lazy" @submit.prevent="submit">
         <v-text-field
           v-model="userData.email"

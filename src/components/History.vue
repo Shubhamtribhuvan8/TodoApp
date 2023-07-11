@@ -13,12 +13,22 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="styling1">
     <v-sheet max-width="800" class="mx-auto">
-      <h1>ToDo Delete History</h1>
-      <div v-for="data in historyData" :key="data.id">
-        <h1>Deleted Data: {{ data.textsomething }}</h1>
-      </div>
+      <h1 style="text-align: center">ToDo Delete History</h1>
+        <table>
+        <thead>
+          <th>Sr.No</th>
+          <th>Deleted Data</th>
+        </thead>
+        <tbody>
+          <tr v-for="(data, index) in historyData" :key="index">
+            <td>{{ index + 1 }}</td>
+            <td>{{ data.textsomething }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- </div> -->
     </v-sheet>
   </div>
 </template>
