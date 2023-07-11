@@ -9,13 +9,16 @@ export default {
     },
   },
 };
+// console.log(this.getHistoryData)
 </script>
 
 <template>
   <div>
-    <v-sheet max-width="300" class="mx-auto">
-      <h1>ToDo Details</h1>
-      <h1>Your Data: {{ historyData.textsomething }}</h1>
+    <v-sheet max-width="800" class="mx-auto">
+      <h1>ToDo Delete History</h1>
+      <div v-for="data in historyData" :key="data.id">
+        <h1>Deleted Data: {{ data.textsomething }}</h1>
+      </div>
     </v-sheet>
   </div>
 </template>

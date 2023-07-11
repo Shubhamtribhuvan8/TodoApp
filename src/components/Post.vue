@@ -1,8 +1,8 @@
 <script>
 export default {
-    data() {
+  data() {
     return {
-        postData: {
+      postData: {
         textsomething: '',
       },
       isSubmitted: false,
@@ -10,10 +10,15 @@ export default {
   },
   methods: {
     submit() {
-      this.$store.dispatch('setPostData', this.postData);
-      this.isSubmitted = true;
-      this.resetForm();
-      this.routing();
+      const token = localStorage.getItem('papa');
+      if (token) {
+        this.$store.dispatch('setPostData', this.postData);
+        this.isSubmitted = true;
+        this.resetForm();
+        this.routing();
+      } else {
+        alert('Error: Token not found');
+      }
     },
     resetForm() {
       this.postData = {

@@ -14,6 +14,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/post">Post</RouterLink>
         <RouterLink to="/get">Get</RouterLink>
         <RouterLink to="/delete">Delete</RouterLink>
+        <RouterLink to="/logout">Logout</RouterLink>
       </nav>
     </div>
   </header>

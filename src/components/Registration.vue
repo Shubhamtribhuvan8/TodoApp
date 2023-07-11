@@ -38,9 +38,10 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="styling">
     <v-sheet max-width="300" class="mx-auto">
-      <h4>Sign Up</h4>
+      <h4 class="signup">Sign Up</h4>
+      <br/>
       <v-form ref="form" validate-on="submit" @submit.prevent="submit">
         <v-text-field
           v-model="userData.userName"

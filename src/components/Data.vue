@@ -9,13 +9,12 @@ export default {
     },
   },
   methods: {
-  deleteData() {
-    this.$store.dispatch("clearPostData");
-    this.$store.dispatch("addToHistoryData", this.postData);
-    alert("Data deleted successfully!");
+    deleteData() {
+      this.$store.dispatch("addToHistoryData", this.postData);
+      this.$store.dispatch("clearPostData");
+      alert("Data deleted successfully!");
+    },
   },
-},
-
 };
 </script>
 

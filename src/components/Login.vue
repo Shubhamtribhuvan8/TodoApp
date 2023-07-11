@@ -22,11 +22,24 @@ export default {
       if (storedUserData.email === this.userData.email && storedUserData.password === this.userData.password) {
         this.loading = false;
         alert('Login successful');
+        this.generateAndStoreToken();
         this.routing();
       } else {
         this.loading = false;
         alert('Invalid credentials');
       }
+    },
+    generateAndStoreToken() {
+      const token = this.generateRandomToken();
+      localStorage.setItem('papa', token);
+    },
+    generateRandomToken() {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let token = '';
+      for (let i = 0; i < 10; i++) {
+        token += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      return token;
     },
     routing() {
       this.$router.push('/post');
@@ -36,7 +49,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="styling1">
     <v-sheet max-width="300" class="mx-auto">
       <h4>Login</h4>
       <v-form validate-on="submit lazy" @submit.prevent="submit">
