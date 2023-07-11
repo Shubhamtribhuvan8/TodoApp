@@ -1,37 +1,22 @@
 <template>
-    <div>
-      <p>Data: {{ formData }}</p>
-    </div>
-  </template>
-  
-  <script>
-  import { mapGetters } from 'vuex';
-  import { ref } from 'vue';
+  <div>
+    <h2>Another Component</h2>
+    <p>UserName: {{ userData.userName }}</p>
+    <p>Mail: {{ userData.email }}</p>
+    <p>Password: {{ userData.password }}</p>
+  </div>
+</template>
 
-  export default {
-    computed: {
-      ...mapGetters(['getFormData']), 
-      formData() {
-        return this.getFormData;
-      },
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+  computed: {
+    ...mapGetters(['getUserData']), 
+    userData() {
+      return this.getUserData;
     },
-    setup() {
-      const data = ref('');
-  
-      const submit = async (event) => {
-        this.loading = true;
-        const results = await event;
-        this.loading = false;
-        alert(JSON.stringify(results, null, 2));
-        console.log(this.formData);
-        data.value = this.formData;
-      };
-  
-      return {
-        data,
-        submit,
-      };
-    },
-  };
-  </script>
-  
+  },
+};
+// console.log(this.computed)
+</script>

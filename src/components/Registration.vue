@@ -7,14 +7,23 @@ export default {
         email: '',
         password: '',
       },
-      isSubmitted: false, 
+       isSubmitted: false, 
     };
   },
   methods: {
     submit() {
+      this.$store.dispatch('setUserData', this.userData);
       this.isSubmitted = true;
+      this.resetForm();
     },
   },
+  resetForm() {
+      this.userData = {
+        userName: '',
+        email: '',
+        password: '',
+      };
+    },
 };
 </script>
 
@@ -50,10 +59,10 @@ export default {
       </v-form>
     </v-sheet>
 
-    <div v-if="isSubmitted"> 
+    <!-- <div v-if="isSubmitted"> 
       <p>UserName: <b>{{ userData.userName }}</b></p>
       <p>Mail: <b>{{ userData.email }}</b></p>
       <p>Password: <b>{{ userData.password }}</b></p>
-    </div>
+    </div> -->
   </div>
 </template>
