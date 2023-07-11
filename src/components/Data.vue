@@ -1,34 +1,53 @@
 <script>
 import { mapGetters } from 'vuex';
-
+import SvgIcon from '@jamescoyle/vue-icon';
+import { mdiDelete } from '@mdi/js';
 export default {
   computed: {
-    ...mapGetters(['getPostData']), 
-    postData() {
-      return this.getPostData;
+    ...mapGetters(['getTodos']), 
+    todos() {
+      return this.getTodos;
     },
   },
   methods: {
-    deleteData() {
-      this.$store.dispatch("addToHistoryData", this.postData);
-      this.$store.dispatch("clearPostData");
+    deleteData(index) {
+      this.$store.dispatch("addToHistoryData", this.todos[index]);
+      this.$store.dispatch("deleteTodo", index);
       alert("Data deleted successfully!");
     },
   },
+  components: {
+		SvgIcon
+	},
+
+	data() {
+		return {
+	  		path: mdiDelete,
+		}
+	}
 };
 </script>
 
 <template>
   <div class="styling1"> 
     <v-sheet max-width="300" class="mx-auto">
-      <h1>ToDo Details</h1>
-      <h1>Your Data: {{ postData.textsomething }}</h1>
-      <ul>
-        <li v-for="data in postData" :key="data.id">{{ data.textsomething }}</li>
-      </ul>
-      <v-btn variant="outlined" @click="deleteData">
-        Delete
-      </v-btn>
+      <table>
+        <thead>
+          <tr>
+            <th><h3>ToDo Details</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(todo, index) in todos" :key="todo.id">
+            <td>{{ index + 1 }}</td>
+            <td>  {{ todo.text }}</td>
+            <td> 
+              <svg-icon type="mdi" :path="path"  @click="deleteData(index)"></svg-icon>
+         </td>
+          <!-- //<v-btn variant="outlined" @click="deleteData(index)"></v-btn> -->
+          </tr>
+        </tbody>
+      </table>
     </v-sheet>
   </div>
 </template>

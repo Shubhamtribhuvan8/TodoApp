@@ -105,3 +105,11 @@ thead {
   align-content: center;
   gap: 8rem;
 }
+h3 {
+  position: relative;
+  left: 79px;
+}
+.th1 {
+  position: relative;
+  left: 74px;
+}

@@ -1,3 +1,4 @@
+// store.js
 import { createStore } from "vuex";
 
 const store = createStore({
@@ -7,43 +8,49 @@ const store = createStore({
       email: "",
       password: "",
     },
-    postData: [],
+    todos: [],
     historyData: [],
   },
   mutations: {
     setUserData(state, userData) {
       state.userData = userData;
     },
-    setPostData(state, postData) {
-      state.postData = postData;
+    addTodo(state, todo) {
+      state.todos.push(todo);
+    },
+    deleteTodo(state, index) {
+      state.todos.splice(index, 1);
     },
     addToHistoryData(state, data) {
       state.historyData.push(data);
     },
-    clearPostData(state) {
-      state.postData = [];
+    clearTodos(state) {
+      state.todos = [];
     },
   },
   actions: {
     setUserData({ commit }, userData) {
       commit("setUserData", userData);
     },
-    setPostData({ commit }, postData) {
-      commit("setPostData", postData);
+    addTodo({ commit }, todo) {
+      commit("addTodo", todo);
+    },
+    deleteTodo({ commit }, index) {
+      commit("deleteTodo", index);
     },
     addToHistoryData({ commit }, data) {
       commit("addToHistoryData", data);
     },
-    clearPostData({ commit }) {
-      commit("clearPostData");
+    clearTodos({ commit }) {
+      commit("clearTodos");
     },
   },
   getters: {
     getUserData(state) {
       return state.userData;
     },
-    getPostData(state) {
-      return state.postData;
+    getTodos(state) {
+      return state.todos;
     },
     getHistoryData(state) {
       return state.historyData;
