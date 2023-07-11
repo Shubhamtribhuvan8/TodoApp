@@ -27,7 +27,7 @@ export default {
       };
     },
     routing() {
-      this.$router.push('/get');
+      this.$router.push('/login');
     },
   },
 };

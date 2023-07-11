@@ -10,6 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
      <h1>TODO APP</h1>
       <nav>
         <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/login">Login</RouterLink>
         <RouterLink to="/post">Post</RouterLink>
         <RouterLink to="/get">Get</RouterLink>
         <RouterLink to="/delete">Delete</RouterLink>
