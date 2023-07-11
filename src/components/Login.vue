@@ -44,12 +44,14 @@ export default {
           v-model="userData.email"
           :rules="rules"
           label="Email"
+          required
         ></v-text-field>
 
         <v-text-field
           v-model="userData.password"
           :rules="rules"
           label="Password"
+          required
         ></v-text-field>
 
         <v-btn

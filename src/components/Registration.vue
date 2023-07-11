@@ -8,14 +8,20 @@ export default {
         password: '',
       },
       isSubmitted: false,
+      formValid: false,
     };
   },
   methods: {
     submit() {
-      this.$store.dispatch('setUserData', this.userData);
-      this.isSubmitted = true;
-      this.resetForm();
-      this.routing();
+      if (this.$refs.form.validate()) {
+        this.$store.dispatch('setUserData', this.userData);
+        this.isSubmitted = true;
+        alert('Register successful');
+        this.resetForm();
+        this.routing();
+      } else {
+        alert('Please fill in all required fields.');
+      }
     },
     resetForm() {
       this.userData = {
@@ -35,22 +41,25 @@ export default {
   <div>
     <v-sheet max-width="300" class="mx-auto">
       <h4>Sign Up</h4>
-      <v-form validate-on="submit lazy" @submit.prevent="submit">
+      <v-form ref="form" validate-on="submit" @submit.prevent="submit">
         <v-text-field
           v-model="userData.userName"
-          :rules="rules"
+          :rules="[v => !!v || 'Name is required']"
           label="Name"
+          required
         ></v-text-field>
         <v-text-field
           v-model="userData.email"
-          :rules="rules"
+          :rules="[v => !!v || 'Email is required', v => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Invalid email format']"
           label="Email"
+          required
         ></v-text-field>
 
         <v-text-field
           v-model="userData.password"
-          :rules="rules"
+          :rules="[v => !!v || 'Password is required']"
           label="Password"
+          required
         ></v-text-field>
 
         <v-btn

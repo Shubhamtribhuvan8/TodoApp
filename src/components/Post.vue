@@ -10,7 +10,7 @@ export default {
   },
   methods: {
     submit() {
-      this.$store.dispatch('setpostData', this.postData);
+      this.$store.dispatch('setPostData', this.postData);
       this.isSubmitted = true;
       this.resetForm();
       this.routing();

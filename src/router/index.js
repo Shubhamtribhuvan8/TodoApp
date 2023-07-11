@@ -22,7 +22,7 @@ const router = createRouter({
     {
       path: "/delete",
       name: "delete",
-      component: () => import("../views/Delete.vue"),
+      component: () => import("../components/History.vue"),
     },
     {
       path: "/post",
