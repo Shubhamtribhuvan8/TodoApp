@@ -1,4 +1,6 @@
 <script>
+// import { useRouter } from 'vue-router';
+
 export default {
   data() {
     return {
@@ -7,7 +9,7 @@ export default {
         email: '',
         password: '',
       },
-       isSubmitted: false, 
+      isSubmitted: false,
     };
   },
   methods: {
@@ -15,15 +17,19 @@ export default {
       this.$store.dispatch('setUserData', this.userData);
       this.isSubmitted = true;
       this.resetForm();
+      this.routing();
     },
-  },
-  resetForm() {
+    resetForm() {
       this.userData = {
         userName: '',
         email: '',
         password: '',
       };
     },
+    routing() {
+      this.$router.push('/get');
+    },
+  },
 };
 </script>
 
@@ -58,11 +64,5 @@ export default {
         ></v-btn>
       </v-form>
     </v-sheet>
-
-    <!-- <div v-if="isSubmitted"> 
-      <p>UserName: <b>{{ userData.userName }}</b></p>
-      <p>Mail: <b>{{ userData.email }}</b></p>
-      <p>Password: <b>{{ userData.password }}</b></p>
-    </div> -->
   </div>
 </template>
