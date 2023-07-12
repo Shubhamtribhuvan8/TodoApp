@@ -15,6 +15,12 @@ export default {
     Post() {
       this.$router.push('/post');
     },
+    Delethistory(){
+      this.$router.push('/delete');
+    },
+    Return() {
+      this.$router.push('/post');
+    },
     handleStorageChange(event) {
       if (event.key === 'papa') {
         this.hasToken = event.newValue !== null;
@@ -38,5 +44,8 @@ export default {
     <v-btn v-if="!hasToken" @click="Register()">Register</v-btn>
      <v-btn v-if="!hasToken" @click="Login()">Login</v-btn>
   </div>
-  <!-- <v-btn v-if="hasToken" @click="Post()" class="addtodo">ADD TODO</v-btn> -->
+  <div class="twobuttons">
+  <v-btn v-if="hasToken" @click="Return()">ADD TODO </v-btn> 
+  <v-btn v-if="hasToken" @click="Delethistory()">History </v-btn>
+    </div>
 </template>

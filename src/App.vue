@@ -14,7 +14,7 @@ export default {
     <div class="wrapper">
       <h1>TODO APP</h1>
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/"> <v-btn>Home</v-btn></RouterLink>
         <RouterLink v-if="hasToken==true" to="/register">Register</RouterLink>
         <RouterLink v-if="hasToken==true" to="/login">Login</RouterLink>
         <RouterLink v-if="hasToken==true" to="/post">Post</RouterLink>

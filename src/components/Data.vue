@@ -17,12 +17,6 @@ export default {
       this.$store.dispatch("deleteTodo", index);
       alert("Data deleted successfully!");
     },
-    Delethistory(){
-      this.$router.push('/delete');
-    },
-    Return() {
-      this.$router.push('/post');
-    },
   },
   components: {
     SvgIcon,
@@ -58,14 +52,6 @@ export default {
           </tr>
         </tbody>
       </table>
-      <div class="twobuttons">
-        <v-btn @click="Return()">
-      ADD TODO </v-btn> 
-
-      <v-btn @click="Delethistory()">
-      History </v-btn>
-      </div>
-   
      </v-sheet>
   </div>
  
