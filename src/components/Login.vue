@@ -9,17 +9,7 @@ export default {
         password: '',
       },
       loading: false,
-      emailRules: [
-        value => !!value || 'Email is required',
-        value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) || 'Invalid email format',
-      ],
-      passwordRules: [
-        value => !!value || 'Password is required',
-        value => value.length >= 6 || 'Password must be at least 6 characters',
-        value => /[a-z]/.test(value) || 'Password must contain at least one lowercase letter',
-        value => /[A-Z]/.test(value) || 'Password must contain at least one uppercase letter',
-        value => /[0-9]/.test(value) || 'Password must contain at least one digit',
-      ],
+      rules: [value => !!value || 'Field is required'],
     };
   },
   computed: {
@@ -29,16 +19,14 @@ export default {
     submit() {
       this.loading = true;
       const storedUserData = this.getUserData;
-      if (this.$refs.form.validate()) {
-        if (storedUserData.email === this.userData.email && storedUserData.password === this.userData.password) {
-          this.loading = false;
-          alert('Login successful');
-          this.generateAndStoreToken();
-          this.routing();
-        } else {
-          this.loading = false;
-          alert('Invalid credentials');
-        }
+      if (storedUserData.email === this.userData.email && storedUserData.password === this.userData.password) {
+        this.loading = false;
+        alert('Login successful');
+        this.generateAndStoreToken();
+        this.routing();
+      } else {
+        this.loading = false;
+        alert('Invalid credentials');
       }
     },
     generateAndStoreToken() {
@@ -64,17 +52,17 @@ export default {
   <div class="stylinglogin">
     <v-sheet max-width="300" class="mx-auto">
       <h4 class="login">Login</h4>
-      <v-form ref="form" validate-on="submit" @submit.prevent="submit">
+      <v-form validate-on="submit lazy" @submit.prevent="submit">
         <v-text-field
           v-model="userData.email"
-          :rules="emailRules"
+          :rules="rules"
           label="Email"
           required
         ></v-text-field>
 
         <v-text-field
           v-model="userData.password"
-          :rules="passwordRules"
+          :rules="rules"
           label="Password"
           required
         ></v-text-field>
