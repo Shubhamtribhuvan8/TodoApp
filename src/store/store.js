@@ -27,6 +27,13 @@ const store = createStore({
     clearTodos(state) {
       state.todos = [];
     },
+    // New mutation to initialize the store state from localStorage
+    initializeStore(state) {
+      if (localStorage.getItem("store")) {
+        const storedData = JSON.parse(localStorage.getItem("store"));
+        this.replaceState(Object.assign(state, storedData));
+      }
+    },
   },
   actions: {
     setUserData({ commit }, userData) {
@@ -56,6 +63,16 @@ const store = createStore({
       return state.historyData;
     },
   },
+});
+
+// Add an event listener to initialize the store state when the app is loaded
+window.addEventListener("load", () => {
+  store.commit("initializeStore");
+});
+
+// Add a listener to store the state in localStorage whenever a mutation is committed
+store.subscribe((mutation, state) => {
+  localStorage.setItem("store", JSON.stringify(state));
 });
 
 export default store;

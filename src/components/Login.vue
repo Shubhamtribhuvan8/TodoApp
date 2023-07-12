@@ -49,7 +49,7 @@ export default {
 </script>
 
 <template>
-  <div class="styling1">
+  <div class="stylinglogin">
     <v-sheet max-width="300" class="mx-auto">
       <h4 class="login">Login</h4>
       <v-form validate-on="submit lazy" @submit.prevent="submit">

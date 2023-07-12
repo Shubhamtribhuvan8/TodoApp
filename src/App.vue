@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-
+const hasToken = localStorage.getItem('token') !== null;
 </script>
 
 <template>
@@ -11,9 +11,9 @@ import { RouterLink, RouterView } from 'vue-router'
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/login">Login</RouterLink>
-        <RouterLink to="/post">Post</RouterLink>
-        <RouterLink to="/get">Get</RouterLink>
-        <RouterLink to="/delete">Delete</RouterLink>
+        <RouterLink v-if="hasToken" to="/post">Post</RouterLink>
+        <RouterLink v-if="hasToken" to="/get">Get</RouterLink>
+        <RouterLink v-if="hasToken" to="/delete">Delete</RouterLink>
         <RouterLink to="/logout">Logout</RouterLink>
       </nav>
     </div>

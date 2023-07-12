@@ -2,6 +2,7 @@
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiLogout } from '@mdi/js';
 
+
 export default {
   components: {
     SvgIcon
@@ -10,13 +11,12 @@ export default {
   data() {
     return {
       path: mdiLogout,
-    }
-  },
+      };
+    },
 
   methods: {
     logout() {
       localStorage.removeItem('papa');
-      alert("Logout successful!");
       this.routing();
     },
     routing() {
@@ -30,7 +30,7 @@ export default {
 <template>
   <div class="styling1">
     <v-sheet max-width="300" class="mx-auto">
-      <svg-icon type="mdi" :path="path" class="buttons"></svg-icon>
+      <!-- <svg-icon type="mdi" :path="path" class="buttons"></svg-icon> -->
     <v-btn variant="outlined" class="buttons" @click="logout">
         Logout
       </v-btn>

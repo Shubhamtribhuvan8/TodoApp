@@ -77,9 +77,14 @@ body {
   height: 24rem;
   width: 24rem;
 }
-.styling1 {
+.stylinglogin {
   border: 1px double;
   height: 17rem;
+  width: 24rem;
+}
+.styling1 {
+  border: 1px double;
+  height: 37rem;
   width: 24rem;
 }
 .signup {
@@ -112,4 +117,14 @@ h3 {
 .th1 {
   position: relative;
   left: 74px;
+}
+.twobuttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+.backbutton {
+  position: relative;
+  left: 1rem;
 }

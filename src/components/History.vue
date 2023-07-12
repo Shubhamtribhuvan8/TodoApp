@@ -11,6 +11,11 @@ export default {
   mounted() {
     // this.logHistoryData(); // No longer needed
   },
+  methods:{
+      Return() {
+      this.$router.push('/get');
+      },
+    }
 };
 </script>
 
@@ -32,6 +37,11 @@ export default {
           </tr>
         </tbody>
       </table>
+      <div class="backbutton"> 
+        <v-btn @click="Return()">
+      Back </v-btn>
+      </div>
+      
     </v-sheet>
   </div>
 </template>
