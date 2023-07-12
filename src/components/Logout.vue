@@ -17,10 +17,11 @@ export default {
   methods: {
     logout() {
       localStorage.removeItem('papa');
+      localStorage.removeItem('store');
       this.routing();
     },
     routing() {
-      this.$router.push("/login");
+      this.$router.push("/");
     }
   }
 };

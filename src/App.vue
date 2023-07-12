@@ -1,19 +1,27 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-const hasToken = localStorage.getItem('token') !== null;
+import { ref, watch } from 'vue';
+
+const hasToken = ref(localStorage.getItem('token') !== null);
+
+watch(hasToken, (newValue) => {
+  if (newValue && localStorage.getItem('token') === null) {
+    hasToken.value = false;
+  }
+});
 </script>
 
 <template>
   <header>
-   
     <div class="wrapper">
-     <h1>TODO APP</h1>
+      <h1>TODO APP</h1>
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
-        <RouterLink v-if="hasToken" to="/post">Post</RouterLink>
-        <RouterLink v-if="hasToken" to="/get">Get</RouterLink>
-        <RouterLink v-if="hasToken" to="/delete">Delete</RouterLink>
+        <RouterLink v-if="hasToken==true" to="/register">Register</RouterLink>
+        <RouterLink v-if="hasToken==true" to="/login">Login</RouterLink>
+        <RouterLink v-if="hasToken==true" to="/post">Post</RouterLink>
+        <RouterLink v-if="hasToken==true" to="/get">Get</RouterLink>
+        <RouterLink v-if="hasToken==true" to="/delete">Delete</RouterLink>
         <RouterLink to="/logout">Logout</RouterLink>
       </nav>
     </div>
@@ -21,6 +29,7 @@ const hasToken = localStorage.getItem('token') !== null;
 
   <RouterView />
 </template>
+
 
 <style scoped>
 header {

@@ -124,6 +124,11 @@ h3 {
   align-items: center;
   gap: 3rem;
 }
+.twobuttons1 {
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
 .backbutton {
   position: relative;
   left: 1rem;

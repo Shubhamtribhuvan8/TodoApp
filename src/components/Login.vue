@@ -1,3 +1,4 @@
+
 <script>
 import { mapGetters } from 'vuex';
 
@@ -48,6 +49,7 @@ export default {
 };
 </script>
 
+
 <template>
   <div class="stylinglogin">
     <v-sheet max-width="300" class="mx-auto">
@@ -57,7 +59,7 @@ export default {
           v-model="userData.email"
           :rules="rules"
           label="Email"
-          required
+          aria-required="true"
         ></v-text-field>
 
         <v-text-field

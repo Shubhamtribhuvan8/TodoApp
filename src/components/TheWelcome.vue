@@ -1,7 +1,7 @@
 <script setup>
-import Registration from './Registration.vue'
+import Home from './Home.vue'
 </script>
 
 <template>
-  <Registration/>
+  <Home/>
 </template>
