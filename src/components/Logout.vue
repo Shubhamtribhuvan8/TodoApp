@@ -17,7 +17,7 @@ export default {
   methods: {
     logout() {
       localStorage.removeItem('papa');
-      localStorage.removeItem('store');
+      localStorage.removeItem('vuex');
       alert("Logout successfully!")
       this.routing();
     },
