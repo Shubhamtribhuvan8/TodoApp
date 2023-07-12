@@ -128,8 +128,20 @@ h3 {
   display: flex;
   align-items: center;
   gap: 5rem;
+  position: relative;
+  left: 1rem;
 }
 .backbutton {
   position: relative;
   left: 1rem;
+}
+.addtodo {
+  position: relative;
+  left: 7rem;
+}
+.logoutbutton {
+  position: relative;
+  left: 21.7rem;
+  width: 37px;
+  height: 32px;
 }

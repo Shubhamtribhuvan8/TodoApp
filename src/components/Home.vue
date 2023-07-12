@@ -33,10 +33,10 @@ export default {
 
     <template>
   <h1>Welcome to Homepage</h1>
+  <br/>
   <div class="twobuttons1"> 
     <v-btn v-if="!hasToken" @click="Register()">Register</v-btn>
      <v-btn v-if="!hasToken" @click="Login()">Login</v-btn>
-     <v-btn v-if="hasToken" @click="Post()">Post</v-btn>
   </div>
-  
+  <!-- <v-btn v-if="hasToken" @click="Post()" class="addtodo">ADD TODO</v-btn> -->
 </template>

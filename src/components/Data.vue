@@ -2,7 +2,9 @@
 import { mapGetters } from 'vuex';
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiDelete } from '@mdi/js';
+import Logout from './Logout.vue';
 export default {
+
   computed: {
     ...mapGetters(['getTodos']), 
     todos() {
@@ -23,8 +25,9 @@ export default {
     },
   },
   components: {
-		SvgIcon
-	},
+    SvgIcon,
+    Logout
+},
 
 	data() {
 		return {
@@ -36,6 +39,7 @@ export default {
 
 <template>
   <div class="styling1"> 
+    <logout/>
     <v-sheet max-width="300" class="mx-auto">
       <table>
         <thead>

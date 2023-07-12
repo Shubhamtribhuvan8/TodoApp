@@ -1,14 +1,12 @@
-<script setup>
+<script >
 import { RouterLink, RouterView } from 'vue-router'
-import { ref, watch } from 'vue';
-
-const hasToken = ref(localStorage.getItem('token') !== null);
-
-watch(hasToken, (newValue) => {
-  if (newValue && localStorage.getItem('token') === null) {
-    hasToken.value = false;
-  }
-});
+export default {
+  data() {
+    return {
+      hasToken:localStorage.getItem('token') !== null,
+    };
+  },
+}
 </script>
 
 <template>
@@ -22,7 +20,7 @@ watch(hasToken, (newValue) => {
         <RouterLink v-if="hasToken==true" to="/post">Post</RouterLink>
         <RouterLink v-if="hasToken==true" to="/get">Get</RouterLink>
         <RouterLink v-if="hasToken==true" to="/delete">Delete</RouterLink>
-        <RouterLink to="/logout">Logout</RouterLink>
+        <!-- <RouterLink v-if="hasToken2" to="/logout">Logout</RouterLink> -->
       </nav>
     </div>
   </header>

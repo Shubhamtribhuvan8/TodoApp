@@ -1,28 +1,31 @@
 <script>
 import { mapGetters } from 'vuex';
 
+import Logout from './Logout.vue';
 export default {
-  computed: {
-    ...mapGetters(['getHistoryData']), 
-    historyData() {
-      return this.getHistoryData;
+    computed: {
+        ...mapGetters(["getHistoryData"]),
+        historyData() {
+            return this.getHistoryData;
+        },
     },
-  },
-  mounted() {
-    // this.logHistoryData(); // No longer needed
-  },
-  methods:{
-      Return() {
-      this.$router.push('/get');
-      },
-    }
+    mounted() {
+        // this.logHistoryData(); // No longer needed
+    },
+    methods: {
+        Return() {
+            this.$router.push("/get");
+        },
+    },
+    components: { Logout }
 };
 </script>
 
 <template>
   <div class="styling1">
+    <Logout/>
     <v-sheet max-width="800" class="mx-auto">
-      <h1 style="text-align: center">ToDo Delete History</h1>
+      <h1 style="text-align: center">ToDo Deleted History</h1>
       <table>
         <thead>
           <tr>
