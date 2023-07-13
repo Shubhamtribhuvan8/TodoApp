@@ -19,7 +19,7 @@ export default {
     submit() {
       this.loading = true;
       const storedUserData = this.getUserData;
-      if (storedUserData.email === this.userData.email && storedUserData.password === this.userData.password) {
+      if (this.validateForm() && storedUserData.email === this.userData.email && storedUserData.password === this.userData.password) {
         this.loading = false;
         alert('Login successful');
         this.generateAndStoreToken();
@@ -28,6 +28,10 @@ export default {
         this.loading = false;
         alert('Invalid credentials');
       }
+  },
+  validateForm() {
+    const { email, password } = this.userData;
+    return email.trim() !== '' && password.trim() !== '';
     },
     generateAndStoreToken() {
       const token = this.generateRandomToken();
@@ -52,7 +56,7 @@ export default {
   <div class="stylinglogin">
     <v-sheet max-width="300" class="mx-auto">
       <h4 class="login">Login</h4>
-      <v-form validate-on="submit lazy" @submit.prevent="submit">
+      <v-form validateForm validate-on="submit lazy" @submit.prevent="submit">
         <v-text-field
           v-model="userData.email"
           :rules="rules"

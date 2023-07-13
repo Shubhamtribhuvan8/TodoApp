@@ -13,15 +13,28 @@ export default {
   },
   methods: {
     submit() {
-      if (this.$refs.form.validate()) {
-        this.$store.dispatch('setUserData', this.userData);
-        this.isSubmitted = true;
-        alert('Register successful');
-        this.resetForm();
-        this.routing();
-      } else {
-        alert('Please fill in all required fields.');
-      }
+      // if (this.$refs.form.validate()) {
+      //   this.$store.dispatch('setUserData', this.userData);
+      //   this.isSubmitted = true;
+      //   alert('Register successful');
+      //   this.resetForm();
+      //   this.routing();
+      // } else {
+      //   alert('Please fill in all required fields.');
+      // }
+      if (this.validateForm()) {
+      this.$store.dispatch('setUserData', this.userData);
+      this.isSubmitted = true;
+      alert('Register successful');
+      this.resetForm();
+      this.routing();
+    }else{
+      alert('Please fill in all required fields.');
+    }
+  },
+  validateForm() {
+    const { userName, email, password } = this.userData;
+    return userName.trim() !== '' && email.trim() !== '' && password.trim() !== '';
     },
     resetForm() {
       this.userData = {
@@ -42,7 +55,7 @@ export default {
     <v-sheet max-width="300" class="mx-auto">
       <h4 class="signup">Sign Up</h4>
       <br/>
-      <v-form ref="form" validate-on="submit" @submit.prevent="submit">
+      <v-form ref="form" validateForm validate-on="submit" @submit.prevent="submit">
         <v-text-field
           v-model="userData.userName"
           :rules="[v => !!v || 'Name is required']"
