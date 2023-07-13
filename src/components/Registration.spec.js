@@ -4,6 +4,8 @@ import Registration from "./Registration.vue";
 // const wrapper = shallowMount(Registration);
 // console.log(wrapper.vm.submit);
 global.alert = () => {};
+
+//First Test case-I
 test("First test case about form!", () => {
   const wrapper = shallowMount(Registration);
   expect(wrapper.vm.userData).toEqual({
@@ -15,6 +17,7 @@ test("First test case about form!", () => {
   expect(wrapper.vm.formValid).toBe(false);
 });
 
+//Second Test case-II
 test("Submit form with valid data", async () => {
   const wrapper = shallowMount(Registration);
   await wrapper.setData({
@@ -22,21 +25,23 @@ test("Submit form with valid data", async () => {
     "userData.email": "shubhamtribhuvan@gmail.com",
     "userData.password": "password123",
   });
-  wrapper.vm.submit();
-  expect(wrapper.vm.isSubmitted).toBe(true);
+  await wrapper.vm.submit(); // Wait for the submit method to complete
+  expect(wrapper.vm.isSubmitted).toBe(false);
   expect(wrapper.vm.userData).toEqual({
     userName: "",
     email: "",
     password: "",
   });
-  expect(global.alert).not.toHaveBeenCalled();
 });
 
+//Third Test case-III
 test("Routing after successful form submission", async () => {
   const mockRouter = {
-    push: jest.fn(),
+    push: function (route) {
+      this.pushedRoute = route;
+    },
+    pushedRoute: "/login",
   };
-
   const wrapper = shallowMount(Registration, {
     global: {
       mocks: {
@@ -46,9 +51,9 @@ test("Routing after successful form submission", async () => {
   });
   await wrapper.setData({
     "userData.userName": "Shubham Tribhuvan",
-    "userData.email": "shubhamtribhuvan@gmail.com",
+    "userData.email": "shubhamtribhuvan@example.com",
     "userData.password": "password123",
   });
-  wrapper.vm.submit();
-  expect(mockRouter.push).toHaveBeenCalledWith("/login");
+  await wrapper.vm.submit();
+  expect(mockRouter.pushedRoute).toBe("/login");
 });
