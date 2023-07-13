@@ -9,6 +9,3 @@ it("Test if data is a function", () => {
 it("test if label is a undefined", () => {
   expect(typeof GuessAge.data.search).toBe("undefined");
 });
-it("test if label is a label", () => {
-  expect(typeof GuessAge.label).toBe("label");
-});
