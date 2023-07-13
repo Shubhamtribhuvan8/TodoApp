@@ -51,9 +51,44 @@ test("Routing after successful form submission", async () => {
   });
   await wrapper.setData({
     "userData.userName": "Shubham Tribhuvan",
-    "userData.email": "shubhamtribhuvan@example.com",
+    "userData.email": "shubhamtribhuvan@gmail.com",
     "userData.password": "password123",
   });
   await wrapper.vm.submit();
   expect(mockRouter.pushedRoute).toBe("/login");
+});
+
+//Fourth Test case-IV
+test("Test for action/vuex store", async () => {
+  const mochdata = shallowMount(Registration);
+
+  const mockStore = {
+    dispatch: function (action, payload) {
+      this.dispatchedAction = action;
+      this.dispatchedPayload = payload;
+    },
+    dispatchedAction: null,
+    dispatchedPayload: null,
+  };
+
+  const wrapper = shallowMount(Registration, {
+    global: {
+      mocks: {
+        $store: mockStore,
+      },
+    },
+  });
+  console.log(wrapper);
+  await wrapper.setData({
+    "userData.userName": "Shubham Tribhuvan",
+    "userData.email": "shubhamtribhuvan@gmail.com",
+    "userData.password": "password123",
+  });
+  await wrapper.vm.submit();
+  expect(mockStore.dispatchedAction).toBe("setUserData");
+  expect(mockStore.dispatchedPayload).toEqual({
+    userName: "Shubham Tribhuvan",
+    email: "shubhamtribhuvan@gmail.com",
+    password: "password123",
+  });
 });
