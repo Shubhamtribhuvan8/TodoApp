@@ -1,8 +1,9 @@
 import { expect, test } from "vitest";
 import { shallowMount } from "@vue/test-utils";
 import Registration from "./Registration.vue";
-const wrapper = shallowMount(Registration);
-console.log(wrapper.vm.submit);
+// const wrapper = shallowMount(Registration);
+// console.log(wrapper.vm.submit);
+global.alert = () => {};
 test("First test case about form!", () => {
   const wrapper = shallowMount(Registration);
   expect(wrapper.vm.userData).toEqual({
@@ -28,10 +29,7 @@ test("Submit form with valid data", async () => {
     email: "",
     password: "",
   });
-  const inputs = wrapper.findAll("input");
-  inputs.forEach((input) => {
-    expect(input.element.value).toBe("");
-  });
+  expect(global.alert).not.toHaveBeenCalled();
 });
 
 test("Routing after successful form submission", async () => {
