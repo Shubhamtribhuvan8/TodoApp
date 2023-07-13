@@ -7,7 +7,7 @@
       <span>Age: {{age}}</span> <br>
   
       </div><br><br>
-       <label> Enter Firstname </label><br>
+       <label for="username"> Enter Firstname </label><br>
        <input type="text" v-model="search" style="font-size:20px;border-radius:10px;" placeholder=" Name ..."> <br> <br>
       <button type="button" @click="getAge">Guess Age</button>
       <br> <br> <br>
