@@ -72,3 +72,35 @@ test("Routing after successful form submission", async () => {
   await wrapper.vm.submit();
   expect(mockRouter.pushedRoute).toBe("/post");
 });
+
+//Fourth Test case-IV
+test("Test for action/vuex store", async () => {
+  const mochdata = shallowMount(Login);
+  const mockStore = {
+    dispatch: function (action, payload) {
+      this.dispatchedAction = action;
+      this.dispatchedPayload = payload;
+    },
+    dispatchedAction: null,
+    dispatchedPayload: null,
+  };
+
+  const wrapper = shallowMount(Login, {
+    global: {
+      mocks: {
+        $store: mockStore,
+      },
+    },
+  });
+  console.log(wrapper);
+  await wrapper.setData({
+    "userData.email": "shubhamtribhuvan@gmail.com",
+    "userData.password": "password123",
+  });
+  await wrapper.vm.submit();
+  expect(mockStore.dispatchedAction).toBe("setUserData");
+  expect(mockStore.dispatchedPayload).toEqual({
+    email: "shubhamtribhuvan@gmail.com",
+    password: "password123",
+  });
+});
