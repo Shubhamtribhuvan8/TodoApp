@@ -3,7 +3,7 @@
       <h1>Api Fetch component</h1>
       <div class="card-grid">
       <ul v-for="(item, index) in data" :key="index" class="card">
-        <li><img :src="item.image" alt="Product Image" /></li>
+       <img :src="item.image" alt="Product Image" />
         <li>{{ item.category }}</li>
         <li>{{ item.description }}</li>
         <li>{{ item.price }}</li>
