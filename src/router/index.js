@@ -40,6 +40,11 @@ const router = createRouter({
       name: "logout",
       component: () => import("../components/Logout.vue"),
     },
+    {
+      path: "/api",
+      name: "api",
+      component: () => import("../components/ApiFetch.vue"),
+    },
   ],
 });
 
