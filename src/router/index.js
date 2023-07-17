@@ -45,6 +45,17 @@ const router = createRouter({
       name: "api",
       component: () => import("../components/ApiFetch.vue"),
     },
+    {
+      path: "/products/:id/:price/:image/:description",
+      name: "product-detail",
+      component: () => import("../components/SingleProduct.vue"),
+      props: (route) => ({
+        id: route.params.id,
+        price: route.params.price,
+        image: route.params.image,
+        description: route.params.description,
+      }),
+    },
   ],
 });
 
