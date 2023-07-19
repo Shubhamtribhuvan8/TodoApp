@@ -24,6 +24,9 @@ export default {
     ApiData(){
       this.$router.push('/api');
     },
+    Customer(){
+      this.$router.push('/employee');
+    },
     handleStorageChange(event) {
       if (event.key === 'papa') {
         this.hasToken = event.newValue !== null;
@@ -49,6 +52,7 @@ export default {
   </div>
   <div class="twobuttons">
   <v-btn v-if="hasToken" @click="ApiData()">API DATA </v-btn> 
+  <v-btn v-if="hasToken" @click="Customer()">Props DATA </v-btn> 
   <v-btn v-if="hasToken" @click="Return()">ADD TODO </v-btn> 
   <v-btn v-if="hasToken" @click="Delethistory()">History </v-btn>
     </div>
